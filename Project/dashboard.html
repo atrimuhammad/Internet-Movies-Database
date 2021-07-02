@@ -1,0 +1,448 @@
+<html>
+  <body>
+    <title>User dashboard</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <style>
+
+      .slider{
+        width: 800px;
+        height: 500px;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .slides{
+        width: 500%;
+        height: 500px;
+        display: flex;
+      }
+
+      .slides input{
+        display: none;
+      }
+
+      .slide{
+        width: 20%;
+        transition: 2s;
+      }
+
+      .slide img{
+        width: 800px;
+        height: 500px;
+      }
+
+      /*css for manual slide navigation*/
+
+      .navigation-manual{
+        position: absolute;
+        width: 800px;
+        margin-top: -40px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .manual-btn{
+        border: 2px solid red;
+        padding: 5px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 1s;
+      }
+
+      .manual-btn:not(:last-child){
+        margin-right: 40px;
+      }
+
+      .manual-btn:hover{
+        background: red;
+  }
+
+  #radio1:checked ~ .first{
+    margin-left: 0;
+  }
+
+  #radio2:checked ~ .first{
+    margin-left: -20%;
+  }
+
+  #radio3:checked ~ .first{
+    margin-left: -40%;
+  }
+
+  #radio4:checked ~ .first{
+    margin-left: -60%;
+  }
+
+  /*css for automatic navigation*/
+
+  .navigation-auto{
+    position: absolute;
+    display: flex;
+    width: 800px;
+    justify-content: center;
+    margin-top: 460px;
+  }
+
+  .navigation-auto div{
+    left: 0px;
+    border: 2px solid red;
+    padding: 5px;
+    border-radius: 10px;
+    transition: 4s;
+  }
+
+  .navigation-auto div:not(:last-child){
+    margin-right: 40px;
+  }
+
+  #radio1:checked ~ .navigation-auto .auto-btn1{
+    background: red;
+  }
+
+  #radio2:checked ~ .navigation-auto .auto-btn2{
+    background: red;
+  }
+
+  #radio3:checked ~ .navigation-auto .auto-btn3{
+    background: red;
+  }
+
+  #radio4:checked ~ .navigation-auto .auto-btn4{
+    background: red;
+  }
+
+
+
+
+
+  :host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 8px 0;
+  }
+
+  .body{
+    background-color: linear-gradient(to right, red , yellow)
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  .toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-image: linear-gradient(to right, red , yellow);
+    color: Black;
+    font-weight: 600;
+    font-family: "Lucida Console", "Courier New", monospace;
+  }
+
+  .toolbar img {
+    margin: 0 16px;
+  }
+
+  .toolbar #twitter-logo {
+    height: 40px;
+    margin: 0 8px;
+  }
+
+  .toolbar #youtube-logo {
+    height: 40px;
+    margin: 0 16px;
+  }
+
+  .toolbar #twitter-logo:hover,
+  .toolbar #youtube-logo:hover {
+    opacity: 0.8;
+  }
+
+  *{
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .content {
+    background: url("halloween-movies-1600459548.jpg")
+    repeat fixed 100%;
+    display: flex;
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    margin-top: 60px;
+    max-width: auto;
+    max-height: auto;
+    padding-bottom: auto;
+    height: 1000px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  svg.material-icons {
+    height: 24px;
+    width: auto;
+  }
+
+  svg.material-icons:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  .card svg.material-icons path {
+    fill: #888;
+  }
+
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .d-inline-block{
+    margin-left: 10px;
+  }
+
+  /* .btn btn-outline-danger{
+    color: black;
+  } */
+
+  .card.text-center{
+    background-color: transparent;
+    width: max-content;
+    justify-content: center;
+  }
+
+  .footer{
+    border-radius: 10px;
+    margin-top: 100px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-image: linear-gradient(to right, red , yellow);
+    justify-self: bottom;
+  }
+
+  .card {
+    border-radius: 10px;
+    border: 0px;
+    background-image: linear-gradient(to right, red , yellow);
+    height: 40px;
+    width: 200px;
+    margin: 0 8px 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    line-height: 24px;
+  }
+
+  .card-container .card:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .card.card-small {
+    height: 16px;
+    width: 168px;
+  }
+
+  .card-container .card:not(.highlight-card) {
+    cursor: pointer;
+  }
+
+  .card-container .card:not(.highlight-card):hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+  }
+
+  .card-container .card:not(.highlight-card):hover .material-icons path {
+    fill: rgb(105, 103, 103);
+  }
+
+  .card.highlight-card {
+    border-radius: 10px;
+    background-color: linear-gradient(to right,#ff105f,#ffad06);
+    color: red;
+    font-weight: 600;
+    border: none;
+    width: auto;
+    height: auto;
+    min-width: 30%;
+    position: relative;
+  }
+
+  .card.card.highlight-card span {
+    margin-left: 60px;
+  }
+
+  /* Responsive Styles */
+  @media screen and (max-width: 767px) {
+
+    .card-container>*:not(.circle-link),
+    .terminal {
+      width: 100%;
+    }
+
+    .card:not(.highlight-card) {
+      height: 16px;
+      margin: 8px 0;
+    }
+
+    .card.highlight-card span {
+      margin-left: 72px;
+    }
+
+    svg#rocket-smoke {
+      right: 120px;
+      transform: rotate(-5deg);
+    }
+  }
+
+  @media screen and (max-width: 575px) {
+    svg#rocket-smoke {
+      display: none;
+      visibility: hidden;
+    }
+  }
+  </style>
+
+  <!-- Toolbar -->
+  <div class="toolbar" role="banner">
+
+    <img width="40" alt="Angular Logo"
+    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
+    <span><h5>Web Project</h5></span>
+    <span>
+      <form method="GET" action="/searchmovie">
+        <button type="submit" class="btn btn-danger" id="dropdownBasic1">Search</button>
+      </form>
+    </span>
+    <span>
+      <form method="GET" action="/details">
+        <button type="submit" class="btn btn-danger" id="dropdownBasic1">Details</button>
+      </form>
+    </span>
+    <div class="spacer"></div>
+    <a aria-label="Angular on twitter" target="_blank" rel="noopener" href="https://twitter.com/angular" title="Twitter">
+      <svg id="twitter-logo" height="24" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+        <rect width="400" height="400" fill="none" />
+        <path
+        d="M153.62,301.59c94.34,0,145.94-78.16,145.94-145.94,0-2.22,0-4.43-.15-6.63A104.36,104.36,0,0,0,325,122.47a102.38,102.38,0,0,1-29.46,8.07,51.47,51.47,0,0,0,22.55-28.37,102.79,102.79,0,0,1-32.57,12.45,51.34,51.34,0,0,0-87.41,46.78A145.62,145.62,0,0,1,92.4,107.81a51.33,51.33,0,0,0,15.88,68.47A50.91,50.91,0,0,1,85,169.86c0,.21,0,.43,0,.65a51.31,51.31,0,0,0,41.15,50.28,51.21,51.21,0,0,1-23.16.88,51.35,51.35,0,0,0,47.92,35.62,102.92,102.92,0,0,1-63.7,22A104.41,104.41,0,0,1,75,278.55a145.21,145.21,0,0,0,78.62,23"
+        fill="#fff" />
+      </svg>
+    </a>
+    <a aria-label="Angular on YouTube" target="_blank" rel="noopener" href="https://youtube.com/angular" title="YouTube">
+      <svg id="youtube-logo" height="24" width="24" data-name="Logo" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24" fill="#fff">
+      <path d="M0 0h24v24H0V0z" fill="none" />
+      <path
+      d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3-5.2 3z" />
+    </svg>
+  </a>
+  </div>
+
+  <div class="content" role="main">
+
+    <!-- Highlight Card -->
+    <div class="card highlight-card card-small">
+
+      <!--image slider start-->
+      <div class="slider">
+        <div class="slides">
+          <!--radio buttons start-->
+          <input type="radio" name="radio-btn" id="radio1" checked>
+          <input type="radio" name="radio-btn" id="radio2">
+          <input type="radio" name="radio-btn" id="radio3">
+          <input type="radio" name="radio-btn" id="radio4">
+          <!--radio buttons end-->
+          <!--slide images start-->
+          <div class="slide first">
+            <img src="image1.jpg" >
+          </div>
+          <div class="slide">
+            <img src="image2.jpg" >
+          </div>
+          <div class="slide">
+            <img src="image3.jpg" >
+          </div>
+          <div class="slide">
+            <img src="image4.jpg" >
+          </div>
+          <!--slide images end-->
+          <!--automatic navigation start-->
+          <div class="navigation-auto">
+            <div class="auto-btn1"></div>
+            <div class="auto-btn2"></div>
+            <div class="auto-btn3"></div>
+            <div class="auto-btn4"></div>
+          </div>
+          <!--automatic navigation end-->
+        </div>
+        <!--manual navigation start-->
+        <div class="navigation-manual">
+          <label for="radio1" class="manual-btn"></label>
+          <label for="radio2" class="manual-btn"></label>
+          <label for="radio3" class="manual-btn"></label>
+          <label for="radio4" class="manual-btn"></label>
+        </div>
+        <!--manual navigation end-->
+      </div>
+      <!--image slider end-->
+
+      <script type="text/javascript">
+          var counter = 1;
+          setinterval(function () {
+            document.getElementById('radio' + counter).checked = true;
+            counter++;
+            if (counter > 4) {
+              counter = 1;
+            }
+          }
+          , 4000);
+          </script>
+        <!-- <script src="app.component.css"></script> -->
+
+      </div>
+
+      <nav class="footer">
+        <div class="card text-center">
+          <div class="card-header">
+            Featured
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Our Project: IMBD website</h5>
+            <p class="card-text">Made by: Abdullah, Athar, Jalal and Zaid<br></p>
+            <!-- <a href="https://www.google.com/" class="btn btn-danger">Go somewhere</a> -->
+          </div>
+          <div class="card-footer text-muted">
+            ©
+          </div>
+        </div>
+      </nav>
+    </div>
+  </body>
+</html>
+

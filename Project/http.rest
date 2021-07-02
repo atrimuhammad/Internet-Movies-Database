@@ -1,0 +1,56 @@
+GET http://localhost:3000/users/1/abdullah/abdullah
+###
+GET http://localhost:3000/init-video
+
+###
+POST http://localhost:3000/signup
+Content-Type: application/json
+
+{
+    "firstname":"Zaid",
+    "lastname":"Ehtasham",
+    "email":"zaid.1234@gmail.com", 
+    "password":"zaid"
+
+}
+
+###
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email":"zaid.1233@gmail.com",
+    "password":"zaid"
+
+}
+
+
+###
+POST http://localhost:3000/delete
+Content-Type: application/json
+
+{
+    "email":"abdullah.ihsan3@gmail.com"
+}
+
+###
+POST http://localhost:3000/uploadmovie
+Content-Type: application/json
+
+{
+    "moviename":"Youtube2",
+    "description":"After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.",
+    "rating":"8.3",
+    "writer":"Siddiqui Sahab",
+    "director":"John Cena",
+    "producer":"The Rock",
+    "cast":"Robert Downey Jr., Chris Evans, Mark Ruffalo, Chris Hemsworth, Scarlett Johansson, Jeremy Renner"
+}
+
+###
+POST http://localhost:3000/searchmovie
+Content-Type: application/json
+
+{
+    "moviename":"D"
+}

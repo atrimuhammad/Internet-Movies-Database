@@ -1,0 +1,19 @@
+doctype html 
+html(lang="en")
+    head 
+        title "Result"
+    
+    body.bg(style='background: gold; font-size: 20px;')
+        div(style='border: 1px solid black;')
+            h1(style='text-align:center') #{name}
+        div(style='border-radius:50%;')
+            img(src="Project/imgs/Avengers_Endgame_poster.jpg")
+        div(style='border:1px solid black; margin: -10 10px; paddingL 20px;')
+            p Description: #{desc} 
+        div(style='float:right; border:solid 2px black')
+            p Rating: #{rate} 
+        div(style='float:left;')
+            p Writer: #{write}
+            p Director: #{direct} 
+            p Producer: #{prod} 
+            p Cast: #{cas}

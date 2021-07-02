@@ -1,0 +1,132 @@
+<html>
+<head>
+   <style>
+      @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+      .heading-font
+      {
+         font-family: Ubuntu;
+         margin-left: 500px;
+      }
+      .text-font
+      {
+         font-family: Ubuntu;
+         margin-left: 500px;
+      }
+      .input-boxes
+      {
+         margin-left: 500px;
+         width: 280px;
+         height: 30px;
+      }
+      .submit-box
+      {
+         font-family: Ubuntu;
+         margin-left: 500px;
+         color: brown;
+      }
+   </style>
+</head>
+<body>
+   <div>
+      <h1 class="heading-font"> Movie Upload Form</h1>
+      <div class="col-md-12">
+         <form method="POST" action="/uploadmovie" >
+
+            <div class="form-group">
+               <b>
+                  <label class="text-font">Movie Name</label>
+               </b>
+
+               <br>
+
+               <input class="input-boxes" type="text" name="moviename">
+            </div>
+
+            <br>
+
+            <div class="form-group">
+               <b>
+                  <label class="text-font">Movie Poster</label>
+               </b>
+               <br>
+
+               <input class="input-boxes" type="file" name="movieimage">
+            </div>
+
+            <br>
+
+            <div class="form-group">
+               <b>
+                  <label class="text-font">Description</label>
+               </b>
+               <br>
+
+               <textarea class="input-boxes" type="text" name="description" class="form-control"> </textarea>
+            </div>
+
+            <br>
+
+            <div class="form-group">
+               <b>
+                  <label class="text-font">Rating</label>
+               </b>
+               <br>
+
+               <input class="input-boxes" type="text" name="rating" rows="10" class="form-control"></input>
+            </div>
+
+            <br>
+
+            <div class="form-group">
+               <b>
+                  <label class="text-font">Writer</label>
+               </b>
+               <br>
+
+               <input class="input-boxes" type="text" name="writer" class="form-control">
+            </div>
+
+            <br>
+
+            <div class="form-group">
+               <b>
+                <label class="text-font">Director</label>
+               </b>
+               <br>
+
+               <input class="input-boxes" type="text" name="director" class="form-control">
+            </div>
+
+            <br>
+
+            <div class="form-group">
+               <b>
+                <label class="text-font">Producer</label>
+               </b>
+               <br>
+
+               <input class="input-boxes" type="text" name="producer" class="form-control">
+            </div>
+
+            <br>
+
+            <div class="form-group">
+               <b>
+                  <label class="text-font">Cast</label>
+               </b>
+               <br>
+
+               <textarea class="input-boxes" type="text" name="cast" class="form-control"> </textarea>
+            </div>
+
+            <br>
+
+            <b>
+               <button type="submit" class="submit-box">Upload Movie</button>
+            </b>
+         </form>
+      </div>
+   </div>
+</body>
+</html>
